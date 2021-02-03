@@ -11,7 +11,7 @@ function leerArchivo() {
     let emptyArray: any[] = [];
 
     try {
-        return fs.readFile('./producto.txt', 'utf-8').split('\n');
+        return fs.readFileSync('./producto.txt', 'utf-8').split('\n');
             
     } catch (err) {
         console.log('Error de lectura. ', err);
@@ -33,7 +33,7 @@ app.get('/item-random', (req, res)=>{
     viewsRandom++;
     const randomElement = productos[Math.floor(Math.random() * productos.length)];
 
-    res.json(randomElement.title);
+    res.json(randomElement);
 })
 
 app.get('/visitas', (req, res)=>{
